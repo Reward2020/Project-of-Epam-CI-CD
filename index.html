@@ -26,6 +26,14 @@
             width: 460px;
             text-align: right;
         }
+	.button_red {background-color: #f44336;}
+	.button_green {background-color: #4CAF50;}
+	.button_azure:hover {
+ 		 background-color: #b8bba5;
+ 		 color: black;
+  		border: 1px solid #c9d2ff;
+	}
+
     </style>
 </head>
 <body>
@@ -37,7 +45,7 @@
             <button onclick="press('7')">7</button>
             <button onclick="press('8')">8</button>
             <button onclick="press('9')">9</button>
-            <button onclick="press('+')">+</button>
+            <button class="button_green" onclick="press('+')">+</button>
         </div>
         <div class="row">
             <button onclick="press('4')">4</button>
@@ -52,9 +60,9 @@
             <button onclick="press('*')">*</button>
         </div>
         <div class="row">
-            <button onclick="clear1()">C</button>
+            <button class="button_red" onclick="clear1()">C</button>
             <button onclick="press('0')">0</button>
-            <button onclick="calc()">=</button>
+            <button class="button_azure" onclick="calc()">=</button>
             <button onclick="press('/')">/</button>
         </div>
     </div>
