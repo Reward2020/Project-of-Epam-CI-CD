@@ -73,7 +73,9 @@ resource "aws_instance" "apache" {
 
 <br>
 Before run our code we must initialization terraform. In directory where your *file.tf* use command *terraform init* 
+
 <br>after successfully initialization, chek your settings *terraform plan*. If terraform finish succes you can run *file.tf*
+
 <br>If you have failed like on screan. Fix it. As usually it  is code syntax error.
 <br>
 
@@ -167,11 +169,72 @@ deb https://pkg.jenkins.io/debian-stable binary/
 
 ```
 
-<br> Connect on jenkins to your ip:8080
+<br> Connect to jenkins, insert *your IP:8080* in browser.
 
 <br> ![jenkins_pass](screans/jenkins_pass.png "figure")
 
 <br> insert password, press next
 <br> Choose *install suggested plugins* 
 <br> Create user with admin privileges
-<br> Instance configuration. Write Jenkins URL example *http://127.0.0.1:8080/*
+<br> Instance configuration. Write Jenkins URL **example** *http://127.0.0.1:8080/*
+
+
+#### Configuration connect to servers Jenkins & Apache
+
+<br> First step, open in jenkins *Configuration systems* find *Public over SSH* 
+insert your privet key in window *Key* fill in the fields. 
+
+<br>In field *Username* enter the user who will connect to the prod-server
+
+<br>Field *Remote Directory* enter directory destenation
+
+<br> ![jenkins_settings_ssh](screans/jenkins_settings_ssh.png "figure")
+
+
+#### Second Step
+
+<br>You must copy public key to your prod-server from jenkins server.
+
+<br>You can use command *ssh-copy-id* or copy physically.
+
+<br> After that copy this public key to your github repository.
+
+<br> ![git_ssh](screans/git_ssh.png "figure")
+
+<br> Go to repository settings and select item *webhooks* add new, enter feilds
+
+<br> ![git_webhook](screans/git_webhook.png "figure")
+
+<br> In feild *Payload URL* enter address jenkins server. Content type select *application/json* store change.
+
+<br>Go to the main page Jenkins click new item, give name our project and select freestyle project.
+
+<br> ![jenkins_new_item](screans/jenkins_new_item.png "figure")
+
+<br>Configure Project
+
+<br>In Source Code Managment swich from none to Git
+
+<br> ![jenkins_code_maneg](screans/jenkins_code_maneg.png "figure")
+
+<br>Add credentials 
+
+<br> ![jenkins_credentials](screans/jenkins_credentials.png "figure")
+
+<br> Select *Kind* SSH private key, enter feilds *ID* enter name of your private key, enter *Passphrase* if need.
+Store and select your created key for git.
+
+<br>In *Build Trigger* select *GitHub hook trigger...*
+
+<br> ![jenkins_trigger](screans/jenkins_trigger.png "figure")
+   
+<br> Add Post-Buid-Action *Send build artifacts over SSH*
+
+<br> ![jenkins_post_build](screans/jenkins_post_build.png "figure")
+
+<br>Feild *Source file* enter directory or type files what we want download on our prod-server.
+Feild exec command we can leave blank.
+
+<br> When we push something to the repository our hook will catch this and send the necessary files to the desired directory.
+
+<br> Thanks for attention!
