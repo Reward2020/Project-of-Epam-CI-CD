@@ -13,6 +13,8 @@ Project of Epam CI/CD
 
 <br>
 <br>How I did it!
+<br>
+
 #### First step we must install terraform on local machine.
 #### OS Ubuntu 16.04.
 <br>Add the HashiCorp GPG key.
@@ -144,7 +146,7 @@ Apache (v6)                ALLOW       Anywhere (v6)
 
 #### Install jenkins
 
-<br>You can find more information on this <a "href=https://www.jenkins.io/doc/book/installing/linux/">link</a>
+<br>You can find more information on this <a href="https://www.jenkins.io/doc/book/installing/linux/">link</a>
 
 <br>Befor install jenkins check java *sudo apt install openjdk-{version}-jdk*, check version *java -version*
 <br> Step to install jenkins
