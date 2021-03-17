@@ -72,9 +72,10 @@ resource "aws_instance" "apache" {
 ```
 
 <br>
+
 Before run our code we must initialization terraform. In directory where your *file.tf* use command *terraform init* 
 
-<br>after successfully initialization, chek your settings *terraform plan*. If terraform finish succes you can run *file.tf*
+<br>after successfully initialization, chek your settings *terraform plan.* If terraform finish succes you can run *file.tf*
 
 <br>If you have failed like on screan. Fix it. As usually it  is code syntax error.
 <br>
@@ -88,8 +89,11 @@ A successful check looks something like this
 <br> ![terraform_plan](screans/terraform_plan.png "figure")
 
 <br>
+
 Apply settings *terraform apply* after successful apply you can show on your run instance.
+
 <br>
+
 
 <br> ![terraform_apply](screans/terraform_apply.png "figure") 
 
